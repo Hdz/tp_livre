@@ -28,8 +28,24 @@ public class App {
 			System.out.println(unLivre.getId() + " - "  + unLivre.getTitre() + " - " + unLivre.getAuteur());
 			
 		});
+		// Requête avec le em.find
+		Livre requeteTitle2 = em1.find(Livre.class, 2);
+		System.out.println(requeteTitle2);
+		
+		// Requete JPQL pour trouver un livre en fonction de son titre
+		String ref = "Guerre et paix" ;
+		
+		TypedQuery<Livre> requeteTitle = em1.createQuery("select l from Livre l where titre = :reference", Livre.class); 
+
+		requeteTitle.setParameter("reference", ref);
+
+		Livre book = requeteTitle.getSingleResult();
+		System.out.println(book.toString());
 		
 		
+		
+		
+
 		// Fin d'une unité de travail
 		em1.close();
 		

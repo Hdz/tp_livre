@@ -18,6 +18,8 @@ public class Livre {
 	
 	@Column(name="AUTEUR")
 	private String auteur;
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -42,6 +44,59 @@ public class Livre {
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
 	}
+
+	@Override
+	public String toString() {
+		return "Livre [id=" + id + ", titre=" + titre + ", auteur=" + auteur + "]";
+	}
+
+}
+
+@Entity // obligatoire
+@Table(name="CLIENT")
+public class Client {
+
+	@Id // obligatoire
+	@Column(name="ID")
+	private Integer id;
+	
+	@Column(name="NOM")
+	private String nom;
+	
+	@Column(name="PRENOM")
+	private String prenom;
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setTitre(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setAuteur(String prenom) {
+		this.prenom = prenom;
+	}
+
+	@Override
+	public String toString() {
+		return "Livre [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+	}
+	
 	
 	
 	
