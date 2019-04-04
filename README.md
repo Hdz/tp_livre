@@ -1,10 +1,11 @@
-# tp_livre
+﻿# tp_livre
 
 ```
-• Créer une entité Livre ne contenant que l’attribut id
-• Placer sur cette classe les annotations @Entity, @Table et @Id
-• Réaliser un find simple permettant d’extraire un livre en fonction de son id.
-• Ajoutez progressivement les autres champs et vérifier qu’ils sont bien renseignés
-o Faire maintenant une requête JPQL pour trouver un LIVRE en fonction de son TITRE
+• Créer les entités Client et Emprunt
+• Mapper tous les champs de toutes les tables
+• Mettre en place les annotations relationnelles (@OneToMany, @ManyToMany et
+@ManyToOne) sur les entités
+• Réaliser une requête qui permet d’extraire un emprunt et tous ses livres associés.
+• Réaliser une requête qui permet d’extraire tous les emprunts d’un client donné.
 
 ```

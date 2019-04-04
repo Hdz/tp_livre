@@ -61,6 +61,9 @@ public class App {
 			
 		});
 		
+		// (Insertion d'un livre)
+		
+		
 		
 		// Fin d'une unité de travail
 		em1.close();
