@@ -1,12 +1,19 @@
 package dev.DEMO;
 
+
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity // obligatoire
-@Table(name="LIVRE")
+@Table(name="livre")
 public class Livre {
 
 	@Id // obligatoire
@@ -19,7 +26,11 @@ public class Livre {
 	@Column(name="AUTEUR")
 	private String auteur;
 	
-	
+	@ManyToMany()
+	@JoinTable(name="COMPO",
+	joinColumns= @JoinColumn(name="ID_LIV", referencedColumnName="ID"),
+	inverseJoinColumns= @JoinColumn(name="ID_EMP", referencedColumnName="ID"))
+	private List<Emprunt> emprunt;
 
 	public Integer getId() {
 		return id;
@@ -50,54 +61,17 @@ public class Livre {
 		return "Livre [id=" + id + ", titre=" + titre + ", auteur=" + auteur + "]";
 	}
 
+	public List<Emprunt> getEmprunt() {
+		return emprunt;
+	}
+
+	public void setEmprunt(List<Emprunt> emprunt) {
+		this.emprunt = emprunt;
+	}
+
 }
 
-@Entity // obligatoire
-@Table(name="CLIENT")
-public class Client {
 
-	@Id // obligatoire
-	@Column(name="ID")
-	private Integer id;
-	
-	@Column(name="NOM")
-	private String nom;
-	
-	@Column(name="PRENOM")
-	private String prenom;
 	
 	
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setTitre(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setAuteur(String prenom) {
-		this.prenom = prenom;
-	}
-
-	@Override
-	public String toString() {
-		return "Livre [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
-	}
-	
-	
-	
-	
-}
