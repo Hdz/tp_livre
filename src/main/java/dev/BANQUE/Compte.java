@@ -2,40 +2,29 @@ package dev.BANQUE;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity //obligatoire
-@Table(name="Compte")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "compte")
 public class Compte {
-	
-	
 	@Id // obligatoire
-	@Column(name="numero")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	private Integer id;
+
+	@Column(name="NUMERO", nullable =false, updatable = false)
 	private String numero;
 	
-	@Column(name="solde")
+	@Column(name="SOLDE")
 	private Double solde;
-	
-	@ManyToMany
-	@JoinTable(name = "CMP_CLIENTS", 
-	joinColumns =  @JoinColumn(name="CMP_CLIENTS", referencedColumnName="numero"),
-	inverseJoinColumns= @JoinColumn(name="ID_CLI", referencedColumnName="nom"))
-	private List<Client> client;
-	
-	@OneToMany
+
+	@ManyToMany(mappedBy = "comptes")
+	private List<Client> clients;
+
+	@OneToMany(mappedBy = "compte")
 	private List<Operation> operations;
-	
-	
+
 	
 	public String getNumero() {
 		return numero;
@@ -59,11 +48,11 @@ public class Compte {
 	}
 
 	public List<Client> getClient() {
-		return client;
+		return clients;
 	}
 
-	public void setClient(List<Client> client) {
-		this.client = client;
+	public void setClient(List<Client> clients) {
+		this.clients = clients;
 	}
 
 	public List<Operation> getOperations() {

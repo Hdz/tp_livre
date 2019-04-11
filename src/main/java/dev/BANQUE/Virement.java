@@ -1,10 +1,8 @@
 package dev.BANQUE;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
-
 public class Virement extends Operation{
 	@Column(name="BENEFICIAIRE")
 	private String beneficiaire;

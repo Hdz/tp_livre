@@ -2,20 +2,20 @@ package dev.BANQUE;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity //obligatoire
-@Table(name="Banque")
+@Table(name="banque")
 public class Banque {
 	@Id // obligatoire
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID", updatable=false, nullable=false)
+	private Integer id;
+
 	@Column(name="NOM")
 	private String nom;
 
-	@OneToMany
+	@OneToMany(mappedBy = "banque")
 	private List<Client> clients;
 	
 	public String getNom() {

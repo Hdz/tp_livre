@@ -3,34 +3,38 @@ package dev.BANQUE;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity //obligatoire
-@Table(name="Client")
+@Table(name="client")
 public class Client {
 	@Id // obligatoire
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID", updatable=false, nullable=false)
+	private Long id;
+
 	@Column(name="NOM")
 	private String nom;
 	
-	@Column(name="prenom")
+	@Column(name="PRENOM")
 	private String prenom;
 	
-	@Column(name="ddn")
+	@Column(name="DDN")
 	private LocalDate dateNaissance;
 
-	@OneToMany
-	private List<Compte> compte ;	
+
+	@ManyToMany (cascade = {CascadeType.ALL})
+	@JoinTable(name = "correspondance",
+			joinColumns = @JoinColumn(name = "ID_CLIENT", referencedColumnName = "ID"),
+			inverseJoinColumns = @JoinColumn(name = "ID_COMPTE", referencedColumnName = "ID")
+	)
+	private List<Compte> comptes ;
 	
 	@Embedded
 	private Adresse adresse;
 	
 	@ManyToOne
+	@JoinColumn(name="ID_BANQUE")
 	private Banque banque;
 
 	public String getNom() {
@@ -58,11 +62,11 @@ public class Client {
 	}
 
 	public List<Compte> getCompte() {
-		return compte;
+		return comptes;
 	}
 
-	public void setCompte(List<Compte> compte) {
-		this.compte = compte;
+	public void setCompte(List<Compte> comptes) {
+		this.comptes = comptes;
 	}
 
 	public Adresse getAdresse() {
@@ -83,13 +87,13 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", compte=" + compte
+		return "Client [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", comptes=" + comptes
 				+ ", adresse=" + adresse + ", banque=" + banque + "]";
 	}
 
-	
-		
-	
+
+
+
 
 }
 

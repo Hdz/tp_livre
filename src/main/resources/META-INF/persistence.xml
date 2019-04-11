@@ -20,7 +20,9 @@
 		
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-					<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdd_library" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+			<property name="hibernate.connection.autocommit" value="true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdd_library" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -29,23 +31,25 @@
 	<persistence-unit name="tp_banque" transaction-type="RESOURCE_LOCAL">
 		<!-- Choix de l'implémentation JPA (ici Hibernate) -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>dev.BANQUE.Banque</class>
+		<class>dev.BANQUE.Adresse</class>
 		<class>dev.BANQUE.Client</class>
+		<class>dev.BANQUE.Banque</class>
 		<class>dev.BANQUE.Compte</class>
 		<class>dev.BANQUE.Operation</class>
-		<class>dev.BANQUE.Adresse</class>
 		<class>dev.BANQUE.LivretA</class>
 		<class>dev.BANQUE.AssuranceVie</class>
 		<class>dev.BANQUE.Virement</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdd_banque" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-			
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 			<!-- Affichage des requêtes SQL -->
 			<property name="hibernate.show_sql" value="true" />	
 		</properties>

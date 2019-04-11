@@ -2,8 +2,7 @@ package dev.BANQUE;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class AssuranceVie extends Compte {

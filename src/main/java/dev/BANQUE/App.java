@@ -4,10 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class App {
 
@@ -81,10 +78,11 @@ public class App {
 				Virement vi = new Virement();
 				String benef = "Geffroy";
 				String cp = new Compte().getNumero();
-				
-				vi.setBeneficiaire(benef);
-				vi.setCompte(cp); //Pas FINI
-				vi.setDate(LocalDateTime.now()); // PAS FINI DU TOUT
+
+				// Recupérer un client depuis la base
+
+				//vi.setBeneficiaire(benef);
+
 				vi.setMontant(58.00);
 				vi.setMotif("Virement 1");
 				

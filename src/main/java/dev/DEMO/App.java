@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 public class App {
 
 	public static void main(String[] args) {
+		System.out.println("TOTOTOTOTO \n");
 
 		// Etape 1 - Créer une instance d'EntityManagerFactory
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp_livre");

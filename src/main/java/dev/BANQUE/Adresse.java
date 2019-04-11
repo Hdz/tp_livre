@@ -1,11 +1,8 @@
 package dev.BANQUE;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Embeddable //obligatoire
-@Table(name="Adresse")
 public class Adresse {
 	@Column(name="NUMERO")
 	private Integer num;
