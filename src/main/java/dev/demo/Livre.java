@@ -1,4 +1,4 @@
-package dev.DEMO;
+package dev.demo;
 
 
 

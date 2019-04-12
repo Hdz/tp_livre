@@ -1,4 +1,4 @@
-package dev.BANQUE;
+package dev.banque;
 
 import java.time.LocalDate;
 

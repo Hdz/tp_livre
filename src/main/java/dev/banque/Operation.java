@@ -1,10 +1,10 @@
-package dev.BANQUE;
+package dev.banque;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
 
 @Entity //obligatoire
-@Table(name="osperation")
+@Table(name="operations")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
 	@Id // obligatoire
@@ -21,7 +21,7 @@ public class Operation {
 	@Column(name="AUTEUR")
 	private String motif;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="ID_COMPTE")
 	private Compte compte;
 

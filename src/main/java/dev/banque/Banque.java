@@ -1,4 +1,4 @@
-package dev.BANQUE;
+package dev.banque;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Banque {
 	@Column(name="NOM")
 	private String nom;
 
-	@OneToMany(mappedBy = "banque")
+	@OneToMany(mappedBy = "banque", cascade = {CascadeType.ALL})
 	private List<Client> clients;
 	
 	public String getNom() {

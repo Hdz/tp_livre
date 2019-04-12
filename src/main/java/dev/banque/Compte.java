@@ -1,4 +1,4 @@
-package dev.BANQUE;
+package dev.banque;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ public class Compte {
 	@Column(name="SOLDE")
 	private Double solde;
 
-	@ManyToMany(mappedBy = "comptes")
+	@ManyToMany(mappedBy = "comptes",cascade = {CascadeType.ALL})
 	private List<Client> clients;
 
-	@OneToMany(mappedBy = "compte")
+	@OneToMany(mappedBy = "compte",cascade = {CascadeType.ALL})
 	private List<Operation> operations;
 
 	

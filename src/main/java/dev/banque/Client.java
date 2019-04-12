@@ -1,4 +1,4 @@
-package dev.BANQUE;
+package dev.banque;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,7 +33,7 @@ public class Client {
 	@Embedded
 	private Adresse adresse;
 	
-	@ManyToOne
+	@ManyToOne (cascade = {CascadeType.ALL})
 	@JoinColumn(name="ID_BANQUE")
 	private Banque banque;
 
